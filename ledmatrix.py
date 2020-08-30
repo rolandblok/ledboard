@@ -1,4 +1,4 @@
-import math
+import math, time
 
 import board
 import neopixel
@@ -10,6 +10,9 @@ class ledmatrix:
         self._total_length = height*width
         self._neopixel =  neopixel.NeoPixel(board.D18, self._total_length, auto_write=False, pixel_order=pixel_encoding)
         self._neopixel[0] = (255,0,0)
+        self._neopixel.show()
+        time.sleep(1)
+        
         
 
     def set_pixel(self, x, y, color):
@@ -22,7 +25,7 @@ class ledmatrix:
         size_y = min(image.height, self._height - y)
         for xx in range(0, size_x):
             for yy in range(0, size_y):
-                self.set_pixel(x+xx, y+yy, image.getpixel((xx, yy))[:3])
+                self.__set_pixel(x+xx, y+yy, image.getpixel((xx, yy))[:3])
         self._neopixel.show()
 
     def __set_pixel(self, x, y, color):
