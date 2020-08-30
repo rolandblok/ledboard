@@ -22,4 +22,8 @@ class ledmatrix:
                 set_pixel(x+xx, y+yy, image.getpixel((xx, yy)))
 
     def calculate_index(self, x, y):
+        row = self._height - y
+        invert_row = (row%2 == 0)
+        if invert_row:
+            x = self._width - 1 - x
         return self._total_length - 1 - x - (y*self._width)
