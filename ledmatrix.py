@@ -4,7 +4,7 @@ import board
 import neopixel
 
 class ledmatrix:
-    def __init__(self, pixel_encoding="GRB", height=14, width=14):
+    def __init__(self, pixel_encoding="RGB", height=14, width=14):
         self._height = height
         self._width = width
         self._total_length = height*width
