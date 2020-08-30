@@ -1,4 +1,6 @@
-import board
-import neopixel
-pixels = neopixel.NeoPixel(board.D18, 14*14) # Raspberry Pi wiring!
-pixels[0] = (255, 0, 0)
+from PIL import Image
+im = Image.open("regenboog.png")
+
+import ledmatrix
+m = ledmatrix.ledmatrix()
+m.set_image(0, 0, im)
