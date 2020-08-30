@@ -8,7 +8,7 @@ class ledmatrix:
         self._height = height
         self._width = width
         self._total_length = height*width
-        self._neopixel =  neopixel.NeoPixel(board.D18, self._total_length)
+        self._neopixel =  neopixel.NeoPixel(board.D18, self._total_length, pixel_order=pixel_encoding)
         self._neopixel[0] = (255,0,0)
         
 
