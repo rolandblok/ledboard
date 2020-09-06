@@ -9,15 +9,20 @@ class ledmatrix:
         self._width = width
         self._total_length = height*width
         self._neopixel =  neopixel.NeoPixel(board.D18, self._total_length, auto_write=False, pixel_order=pixel_encoding)
-        self._neopixel[0] = (255,0,0)
+        for i in range(0, self._total_length):
+            self._neopixel[i] = (255,255,255)
         self._neopixel.show()
-        time.sleep(1)
-        
-        
+        time.sleep(0.1)
+
+    def set_show(self) : 
+        self._neopixel.show()
+
+    def clear_screen(self):
+        for i in range(0, self._total_length):
+            self._neopixel[i] = (0,0,0)
 
     def set_pixel(self, x, y, color):
         self.__set_pixel(x, y, color)
-        self._neopixel.show()
 
 
     def set_image(self, x, y, image):
@@ -26,11 +31,11 @@ class ledmatrix:
         for xx in range(0, size_x):
             for yy in range(0, size_y):
                 self.__set_pixel(x+xx, y+yy, image.getpixel((xx, yy))[:3])
-        self._neopixel.show()
 
     def __set_pixel(self, x, y, color):
-        i = self.calculate_index(x, y)
-        self._neopixel[i] = color
+        if (x >= 0) and (x < self._width) and (y >= 0) and (y < self._height) :
+            i = self.calculate_index(x, y)
+            self._neopixel[i] = color
 
     def calculate_index(self, x, y):
         row = self._height - y
