@@ -21,16 +21,29 @@ class ledmatrix:
         for i in range(0, self._total_length):
             self._neopixel[i] = (0,0,0)
 
+    def fill_screen(self, color):
+        for i in range(0, self._total_length):
+            self._neopixel[i] = color
+
     def set_pixel(self, x, y, color):
         self.__set_pixel(x, y, color)
 
 
-    def set_image(self, x, y, image):
+    def set_image(self, x, y, image, color=None):
         size_x = min(image.width, self._width - x)
         size_y = min(image.height, self._height - y)
         for xx in range(0, size_x):
             for yy in range(0, size_y):
-                self.__set_pixel(x+xx, y+yy, image.getpixel((xx, yy))[:3])
+                if color == None :
+                    c = image.getpixel((xx, yy))[:3]
+                    self.__set_pixel(x+xx, y+yy, c)
+                else : 
+                    if image.getpixel((xx, yy))[:3] != (0,0,0) :
+                        c = color
+                        self.__set_pixel(x+xx, y+yy, c)
+                    #else :
+                    #    c = (0,0,0) 
+                
 
     def __set_pixel(self, x, y, color):
         if (x >= 0) and (x < self._width) and (y >= 0) and (y < self._height) :
