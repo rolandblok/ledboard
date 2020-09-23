@@ -34,14 +34,13 @@ class ledmatrix:
         size_y = min(image.height, self._height - y)
         for xx in range(0, size_x):
             for yy in range(0, size_y):
-                if color == None :
-                    c = image.getpixel((xx, yy))[:3]
-                    self.__set_pixel(x+xx, y+yy, c)
-                else : 
-                    if image.getpixel((xx, yy))[:3] != (0,0,0) :
+                if image.getpixel((xx, yy))[:3] != (0,0,0) :
+                    if color == None :
+                        c = image.getpixel((xx, yy))[:3]
+                    else : 
                         c = color
-                        self.__set_pixel(x+xx, y+yy, c)
-                    #else :
+                    self.__set_pixel(x+xx, y+yy, c)
+                #else :
                     #    c = (0,0,0) 
                 
 

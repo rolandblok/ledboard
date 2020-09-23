@@ -101,7 +101,7 @@ while(loop_active):
 
     if(pacman_hour_active):
         led_matrix.set_image(pacman_hour_pos, 0, spook_paars_7_7[int(pacman_hour_pos % 2)] )
-        led_matrix.set_image(pacman_hour_pos + 9, 0, pacman_7_7_r[int(pacman_hour_pos % 2)] )
+        led_matrix.set_image(pacman_hour_pos + 9, 0, pacman_7_7_l[int(pacman_hour_pos % 2)] )
 
 
     led_matrix.set_show()
